@@ -1,10 +1,18 @@
 {% extends 'memes/base.html' %}
+{% load static %}
+
+{% block header %}
+<title>All Memes</title>
+{% endblock %}
 
 {% block content %}
 
 {% for i in memes %}
-{{ i.text }}
+<img src='{% static i.image_url %}'>
 <br>
+{{ i.text }}
+<a href="{% url 'edit_meme' i.id %}">Edit</a>
+<hr>
 {% endfor %}
 
 {% endblock %}
