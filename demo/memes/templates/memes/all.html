@@ -2,14 +2,18 @@
 {% load static %}
 
 {% block header %}
+<link rel="stylesheet" href="{% static 'all.css' %}">
 <title>All Memes</title>
 {% endblock %}
 
 {% block content %}
-{% for i in memes %}
-<img src='{{ i.image_url }}'>
+<a href="{% url 'create_meme' %}">Add Meme</a>
 <br>
-{{ i.text }}
+{% for i in memes %}
+<div class="meme" style="background-image: url({{ i.image_url }})">
+
+<p class="bottom">{{ i.text }}</p>
+</div>
 <a href="{% url 'edit_meme' i.id %}">Edit</a>
 <hr>
 {% endfor %}
